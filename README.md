@@ -3,11 +3,11 @@
   <a href="https://arxiv.org/abs/2407.21018">Paper</a>
 </p>
 
-We provide two kinds of implementation. `ThinK_eager` contains the code for eager attention while `ThinK_flash` includes the FlashAttention. Note that the current implementation may not efficient enough.
+We provide three implementations. `ThinK_eager` contains the code for eager attention, `ThinK_flash` utilizes FlashAttention and `TinK_KIVI` which intergrates with KV quantization. Please note that the current implementations may not be fully optimized, and we are actively working on improving their efficiency.
 
 ## ✅ TODO
 
-- [ ] Support More Kinds of Models
+- [ ] Support More Models
 - [ ] Support Multi-GPUs
 - [ ] Optimize Efficiency
 
@@ -38,7 +38,7 @@ sh ./scripts/scripts_longBench/metrics.sh
 ```shell
 cd ThinK_kivi
 ```
-Set up environments following the instrunctions of KIVI. We add one more argument `pruning_ratio`. Currently, only LLaMA-2 is supported.
+Set up the environments as per the instructions from KIVI, adding an additional argument, `pruning_ratio`. Currently, only LLaMA-2 is supported.
 
 ## Citation
 ```markdown
