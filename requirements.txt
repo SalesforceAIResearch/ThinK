@@ -1,0 +1,19 @@
+transformers==4.40
+pandas
+numpy
+torch
+evaluate
+accelerate
+SentencePiece
+flash_attn
+jieba
+rouge
+fuzzywuzzy
+python-Levenshtein
+protobuf
+-i https://pypi.org/simple/ bitsandbytes
+openai
+anthropic
+seaborn
+matplotlib
+pygini
