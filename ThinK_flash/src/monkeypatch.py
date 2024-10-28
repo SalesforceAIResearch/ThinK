@@ -32,9 +32,6 @@ def replace_llama(method):
             break
     if warning_flag:
         warnings.warn(f"Transformers version {transformers_version} might not be compatible.")
-    
-    
-    # Pyramid KV method
    
     transformers.models.llama.modeling_llama.LlamaModel.forward= llama_model_forward
     
@@ -65,8 +62,6 @@ def replace_mistral(method):
     if warning_flag:
         warnings.warn(f"Transformers version {transformers_version} might not be compatible.")
     
-    
-    # Pyramid KV method
    
     transformers.models.mistral.modeling_mistral.MistralModel.forward= mistral_model_forward
       

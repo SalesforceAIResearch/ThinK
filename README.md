@@ -3,7 +3,7 @@
   <a href="https://arxiv.org/abs/2407.21018">Paper</a>
 </p>
 
-We provide three implementations. `ThinK_eager` contains the code for eager attention, `ThinK_flash` utilizes FlashAttention and `TinK_KIVI` which intergrates with KV quantization. Please note that the current implementations may not be fully optimized, and we are actively working on improving their efficiency.
+We provide three implementations. `ThinK_eager` contains the code for eager attention, `ThinK_flash` utilizes FlashAttention and `TinK_KIVI` which intergrates with KV quantization. Please note that the current implementations may not be fully optimized, and we are actively working on improving their efficiency. We use LongBench to evaluate the performance.
 
 ## ✅ TODO
 
@@ -39,6 +39,9 @@ sh ./scripts/scripts_longBench/metrics.sh
 cd ThinK_kivi
 ```
 Set up the environments as per the instructions from KIVI, adding an additional argument, `pruning_ratio`. Currently, only LLaMA-2 is supported.
+
+## Notes
+Users need to make their own assessment regarding any obligations or responsibilities under the corresponding licenses or terms and conditions pertaining to the original datasets and data. This repository is being released for research purposes only.
 
 ## Citation
 ```markdown

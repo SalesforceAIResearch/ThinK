@@ -99,19 +99,19 @@ if __name__ == '__main__':
     
     results_list = [
         ["dataset"],
+        ["SnapKV"],
         ["H2O"],
-        ["PyramidKV"],
     ]
     
     for dataset in dataset_list:
         
         results_list[0].append(dataset)
         
-        for idx, method in enumerate(["H2O", "PyramidKV"]):
+        for idx, method in enumerate(["SnapKV", "H2O"]):
             try:
                 args.method = method
                 args.dataset = dataset
-                args.eval_file = os.path.join('/export/aiops-data/yuhui/ThinK/ThinK_flash',args.results_dir,args.model_name,dataset,f"{method}.json")
+                args.eval_file = os.path.join('/export/aiops-data/yuhui/ThinK/ThinK_eager',args.results_dir,args.model_name,dataset,f"{method}.json")
                 
                 # try:
                 
@@ -172,6 +172,6 @@ if __name__ == '__main__':
                 print(f"dataset {args.dataset} method {args.method} scores {None}")
                 
     import csv
-    with open(os.path.join('/export/aiops-data/yuhui/ThinK/ThinK_flash',args.results_dir,args.model_name,f"results.csv"), 'w') as fp:
+    with open(os.path.join('/export/aiops-data/yuhui/ThinK/ThinK_eager',args.results_dir,args.model_name,f"results.csv"), 'w') as fp:
         writer = csv.writer(fp)
         writer.writerows(results_list)
