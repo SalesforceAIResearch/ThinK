@@ -1,12 +1,11 @@
 
 <div align="center">
-  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main"><img width="400px" height="auto" src="./images/logo.png"></a>
+  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main"><img width="400px" height="auto" src="./images/logo_think.png"></a>
 </div>
 <br/>
 
 <div align="center">
 
-  <!-- [![Release Notes](https://img.shields.io/github/release/SalesforceAIResearch/xLAM)](https://github.com/SalesforceAIResearch/xLAM/releases) -->
   ![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)
   [![License](https://img.shields.io/badge/License-Apache-green.svg)]()
  [![GitHub star chart](https://img.shields.io/github/stars/SalesforceAIResearch/ThinK?style=social)](https://star-history.com/#SalesforceAIResearch/ThinK)
