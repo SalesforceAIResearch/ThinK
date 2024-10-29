@@ -15,8 +15,8 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2407.21018">Paper</a> |
   <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main?tab=readme-ov-file#Installation">Installation</a> |
-  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main?tab=readme-ov-file##Eviction">Eviction</a> |
-  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main?tab=readme-ov-file##Quantization">Quantization</a>
+  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main?tab=readme-ov-file#Eviction">Eviction</a> |
+  <a href="https://github.com/SalesforceAIResearch/ThinK/tree/main?tab=readme-ov-file#Quantization">Quantization</a>
 </p>
 
 We provide three implementations. `ThinK_eager` contains the code for eager attention, `ThinK_flash` utilizes FlashAttention and `TinK_KIVI` which intergrates with KV quantization. Please note that the current implementations may not be fully optimized, and we are actively working on improving their efficiency. We use LongBench to evaluate the performance.
