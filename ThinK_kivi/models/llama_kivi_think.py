@@ -19,7 +19,11 @@ _CONFIG_FOR_DOC = "LlamaConfig"
 def key_pruner_query_driven(kv_states, q_states, ratio=0.3):
     bz, _, seqlen, head_dim = kv_states.shape
     k = int(head_dim * ratio)
-    key = torch.matmul(q_states[..., -32:, :].permute(0, 1, 3, 2).unsqueeze(-1), kv_states.transpose(2, 3).unsqueeze(-2)).pow_(2).sum(dim=(-1, -2))
+    # new implementation
+    queries_norm = torch.pow(q_states[..., -32:, :], 2).mean(dim=2)
+    keys_norm = torch.pow(kv_states, 2).mean(dim=2)
+    key = queries_norm * keys_norm
+    # key = torch.matmul(q_states[..., -32:, :].permute(0, 1, 3, 2).unsqueeze(-1), kv_states.transpose(2, 3).unsqueeze(-2)).pow_(2).sum(dim=(-1, -2))
     del q_states
     _, indices = torch.topk(key, k, dim=-1, largest=False)  
     keep_idx = indices.sort().values

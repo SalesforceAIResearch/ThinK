@@ -8,11 +8,14 @@ import math
 # perform qk calculation and get indices
 # this version will not update in inference mode
 
-# Copied from transformers.models.llama.modeling_llama.repeat_kv
 def key_pruner_query_driven(kv_states, q_states, recent_size=128, ratio=0.3):
     _, _, seqlen, head_dim = kv_states.shape
     k = int(head_dim * ratio)
-    key = torch.matmul(q_states[..., -32:, :].permute(0, 1, 3, 2).unsqueeze(-1), kv_states.transpose(2, 3).unsqueeze(-2)).pow_(2).sum(dim=(-1, -2))
+    # new efficient implementation
+    queries_norm = torch.pow(q_states[..., -32:, :], 2).mean(dim=2)
+    keys_norm = torch.pow(kv_states, 2).mean(dim=2)
+    key = queries_norm * keys_norm
+    # key = torch.matmul(q_states[..., -32:, :].permute(0, 1, 3, 2).unsqueeze(-1), kv_states.transpose(2, 3).unsqueeze(-2)).pow_(2).sum(dim=(-1, -2))
     del q_states
     _, indices = torch.topk(key, k, dim=-1, largest=False)
     keep_idx = indices.sort().values
@@ -23,7 +26,7 @@ def key_pruner_query_driven(kv_states, q_states, recent_size=128, ratio=0.3):
 
     return kv_states[:, :, :seqlen - recent_size, :][~mask_k], kv_states[:, :, seqlen - recent_size:, :], ~mask
 
-
+# Copied from transformers.models.llama.modeling_llama.repeat_kv
 def repeat_kv(hidden_states: torch.Tensor, n_rep: int) -> torch.Tensor:
     """
     This is the equivalent of torch.repeat_interleave(x, dim=1, repeats=n_rep). The hidden states go from (batch,
